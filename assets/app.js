@@ -145,6 +145,70 @@
       '  </div>',
       '</div>'
     ].join('');
+
+    try {
+      var existingPanel = document.getElementById('vat-explainer-panel');
+      if (!existingPanel) {
+        var panel = document.createElement('div');
+        panel.id = 'vat-explainer-panel';
+        panel.style.marginTop = '18px';
+        panel.innerHTML =
+          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px;">VAT explained</div>' +
+          '<div class="gra-hint" style="margin-top: 0;">' +
+          'Understand VAT, NHIL, and the GETFund Levy, how they work, and the latest guidance. ' +
+          '<a href="https://gra.gov.gh/domestic-tax/tax-types/vat/">Open VAT information page</a>' +
+          '</div>' +
+          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px; margin-top:18px;">File and Pay taxes</div>' +
+          '<div class="gra-hint" style="margin-top: 0;">' +
+          'Register, file your returns, and pay your taxes online through the GRA portal. ' +
+          '<a href="https://taxpayersportal.com/auth">Open File and Pay portal</a>' +
+          '</div>';
+
+        var vatCards = mount.querySelectorAll('.paye-vat-col .paye-vat-card');
+        var vatRatesCard = vatCards && vatCards.length > 1 ? vatCards[1] : null;
+        if (vatRatesCard && vatRatesCard.parentNode) {
+          if (vatRatesCard.nextSibling) {
+            vatRatesCard.parentNode.insertBefore(panel, vatRatesCard.nextSibling);
+          } else {
+            vatRatesCard.parentNode.appendChild(panel);
+          }
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    try {
+      var existingDisclaimer = document.getElementById('vat-disclaimer-section');
+      if (!existingDisclaimer) {
+        var disclaimer = document.createElement('div');
+        disclaimer.id = 'vat-disclaimer-section';
+        disclaimer.style.marginTop = '130px';
+        disclaimer.className = 'gdlr-core-pbf-element';
+        disclaimer.innerHTML =
+          '<div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-bottom gdlr_core-item-pdlr" style="padding-left: 20px;">' +
+          '<div class="gdlr-core-title-item-title-wrap">' +
+          '<h3 class="gdlr-core-title-item-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 600; text-transform: none; color: #313787;">' +
+          'Disclaimer on Use Of Tax Calculators' +
+          '<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>' +
+          '</h3>' +
+          '</div>' +
+          '<span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption">' +
+          'The use of the Tax Calculators only serves as a guideline. The actual tax payable by you or deduction available to you (if any) will depend on your personal circumstances. It is advised that for filing of returns and for making formal financial decisions, the exact calculation be made as per the provisions contained in the relevant Acts, and Laws.' +
+          '</span>' +
+          '</div>';
+
+        var contentColumn = document.querySelector('.gdlr-core-pbf-sidebar-content-inner') ||
+          document.querySelector('.gdlr-core-pbf-sidebar-content') ||
+          mount.parentNode;
+
+        if (contentColumn) {
+          contentColumn.appendChild(disclaimer);
+        }
+      }
+    } catch (e) {
+      // ignore
+    }
   }
 
   function boot() {
