@@ -269,6 +269,19 @@
   font-size:16px;
 }
 
+#gra-vat-calculator .gra-btn-secondary:hover,
+#gra-vat-calculator .gra-btn-secondary:focus-visible{
+  background:#d9e4f2;
+  border-color:var(--gra-navy);
+  color:var(--gra-navy);
+}
+
+#gra-vat-calculator .gra-btn-secondary:active{
+  background:#c5d4e8;
+  border-color:var(--gra-navy);
+  color:var(--gra-navy);
+}
+
 #gra-vat-calculator .gra-results{margin-top:12px;}
 
 #gra-vat-calculator .is-hidden{display:none !important;}
