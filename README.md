@@ -18,6 +18,8 @@ Maintainer: Carl Quist (https://github.com/chillboy0101)
 
 Official rates: https://gra.gov.gh/domestic-tax/tax-types/vat/
 
+The VAT page is https://gra.gov.gh/domestic-tax/tax-types/vat/. The rates in `assets/app.js` match that page: NHIL 2.5%, the GETFund Levy 2.5%, and VAT 15% are each charged on the same taxable value.
+
 ## What a visitor can do
 
 The form has two modes.
