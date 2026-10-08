@@ -78,7 +78,7 @@
       '    <div class="paye-vat-grid" style="display: block;">',
       '      <div class="paye-vat-col" style="margin: 0 auto 40px;">',
       '        <div class="paye-vat-card">',
-      '          <div class="paye-vat-section-title">Calculate VAT &amp; Levies</div>',
+      '          <div class="paye-vat-section-title">Amount</div>',
       '          <form id="vat-form" novalidate>',
       '            <div class="gra-field">',
       '              <label class="gra-label">Mode</label>',
@@ -94,7 +94,7 @@
       '                <span class="gra-input-prefix">GH¢</span>',
       '                <input id="vatAmount" class="gra-input" inputmode="decimal" autocomplete="off" placeholder="e.g. 1000.00" required />',
       '              </div>',
-      '              <p id="vatError" class="gra-error"><span id="vatErrorText">Please enter a valid amount greater than zero.</span></p>',
+      '              <p id="vatError" class="gra-error" role="alert"><span id="vatErrorText">Enter the taxable amount.</span></p>',
       '              <span id="vatHint" class="gra-hint" style="margin-top: 6px;">NHIL 2.5%, GETFund 2.5%, and VAT 15% are each charged on the taxable value.</span>',
       '            </div>',
       '            <div class="gra-actions" style="flex-direction: column; align-items: stretch;">',
@@ -240,6 +240,19 @@
 
     function clearError() {
       if (vatErrorEl) vatErrorEl.classList.remove('is-visible');
+      if (vatAmountEl) vatAmountEl.removeAttribute('aria-invalid');
+    }
+
+    function failAmount(message) {
+      setError(message);
+      if (vatAmountEl) {
+        vatAmountEl.setAttribute('aria-invalid', 'true');
+        vatAmountEl.focus();
+      }
+      if (resultsEl) resultsEl.classList.add('is-hidden');
+      if (breakdownEl) breakdownEl.classList.add('is-hidden');
+      if (breakdownToggleBtn) breakdownToggleBtn.textContent = 'View breakdown';
+      if (breakdownBodyEl) breakdownBodyEl.innerHTML = '';
     }
 
     function resolveMode() {
@@ -339,13 +352,18 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var mode = resolveMode();
+      var rawAmount = String(vatAmountEl.value == null ? '' : vatAmountEl.value).trim();
+      if (!rawAmount) {
+        failAmount(mode === 'inclusive' ? 'Enter the final cost.' : 'Enter the taxable amount.');
+        return;
+      }
       var parsed = parseCents(vatAmountEl.value);
       if (!parsed.ok) {
-        setError('Please enter a valid amount (e.g. 1000 or 1000.50).');
+        failAmount('Enter a number, such as 1000 or 1000.50.');
         return;
       }
       if (parsed.cents <= 0) {
-        setError('Please enter an amount greater than zero.');
+        failAmount('Enter an amount greater than zero.');
         return;
       }
       clearError();
