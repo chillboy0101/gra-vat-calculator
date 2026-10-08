@@ -95,7 +95,6 @@
       '                <input id="vatAmount" class="gra-input" inputmode="decimal" autocomplete="off" placeholder="e.g. 1000.00" required />',
       '              </div>',
       '              <p id="vatError" class="gra-error" role="alert"><span id="vatErrorText">Enter the taxable amount.</span></p>',
-      '              <span id="vatHint" class="gra-hint" style="margin-top: 6px;">NHIL 2.5%, GETFund 2.5%, and VAT 15% are each charged on the taxable value.</span>',
       '            </div>',
       '            <div class="gra-actions" style="flex-direction: column; align-items: stretch;">',
       '              <button type="submit" class="gra-btn-primary">Calculate</button>',
@@ -218,7 +217,6 @@
     var vatErrorEl = document.getElementById('vatError');
     var vatErrorTextEl = document.getElementById('vatErrorText');
     var vatAmountLabelEl = document.getElementById('vatAmountLabel');
-    var vatHintEl = document.getElementById('vatHint');
     var modeExclusiveEl = document.getElementById('vatModeExclusive');
     var modeInclusiveEl = document.getElementById('vatModeInclusive');
     var resultsEl = document.getElementById('vat-results');
@@ -269,11 +267,6 @@
       }
       if (vatAmountEl) {
         vatAmountEl.setAttribute('placeholder', mode === 'inclusive' ? 'e.g. 1200.00' : 'e.g. 1000.00');
-      }
-      if (vatHintEl) {
-        vatHintEl.textContent = mode === 'inclusive'
-          ? 'Enter the final amount. The calculator splits out NHIL 2.5%, GETFund 2.5%, and VAT 15%.'
-          : 'Enter the taxable amount. NHIL 2.5%, GETFund 2.5%, and VAT 15% are added on that value.';
       }
     }
 

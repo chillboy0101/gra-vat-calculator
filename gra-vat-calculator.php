@@ -3,7 +3,7 @@
  * Plugin Name: GRA VAT Calculator
  * Plugin URI: https://github.com/chillboy0101/gra-vat-calculator
  * Description: Value Added Tax calculator for the Ghana Revenue Authority website. Uses the 1 January 2026 rates: NHIL 2.5%, GETFund Levy 2.5%, and VAT 15% on the same taxable value.
- * Version: 1.0.7
+ * Version: 1.0.8
  * Author: GRA IT Department
  * Author URI: https://gra.gov.gh
  * License: GPL v2 or later
@@ -22,7 +22,7 @@ require_once __DIR__ . '/includes/class-github-updater.php';
 
 class GRA_VAT_Calculator {
 
-    const VERSION = '1.0.7';
+    const VERSION = '1.0.8';
     const SHORTCODE = 'vat_calculator';
 
     public function __construct() {
