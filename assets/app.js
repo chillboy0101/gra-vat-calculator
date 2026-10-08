@@ -92,7 +92,7 @@
       '              <label id="vatAmountLabel" for="vatAmount" class="gra-label">Taxable amount <span aria-hidden="true" style="color: #b91c1c;">*</span></label>',
       '              <div class="gra-input-wrap" style="margin-top: 6px;">',
       '                <span class="gra-input-prefix">GH¢</span>',
-      '                <input id="vatAmount" class="gra-input" inputmode="decimal" autocomplete="off" placeholder="e.g. 1000.00" required />',
+      '                <input id="vatAmount" class="gra-input" inputmode="decimal" autocomplete="off" placeholder="e.g. 1,000.00" required />',
       '              </div>',
       '              <p id="vatError" class="gra-error" role="alert"><span id="vatErrorText">Enter the taxable amount.</span></p>',
       '            </div>',
@@ -266,7 +266,7 @@
           : 'Taxable amount <span aria-hidden="true" style="color: #b91c1c;">*</span>';
       }
       if (vatAmountEl) {
-        vatAmountEl.setAttribute('placeholder', mode === 'inclusive' ? 'e.g. 1200.00' : 'e.g. 1000.00');
+        vatAmountEl.setAttribute('placeholder', mode === 'inclusive' ? 'e.g. 1,200.00' : 'e.g. 1,000.00');
       }
     }
 
