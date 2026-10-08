@@ -314,8 +314,18 @@
       }
     }
 
-    if (modeExclusiveEl) modeExclusiveEl.addEventListener('change', updateAmountLabel);
-    if (modeInclusiveEl) modeInclusiveEl.addEventListener('change', updateAmountLabel);
+    function onModeChange() {
+      if (vatAmountEl) vatAmountEl.value = '';
+      clearError();
+      if (resultsEl) resultsEl.classList.add('is-hidden');
+      if (breakdownEl) breakdownEl.classList.add('is-hidden');
+      if (breakdownToggleBtn) breakdownToggleBtn.textContent = 'View breakdown';
+      if (breakdownBodyEl) breakdownBodyEl.innerHTML = '';
+      updateAmountLabel();
+    }
+
+    if (modeExclusiveEl) modeExclusiveEl.addEventListener('change', onModeChange);
+    if (modeInclusiveEl) modeInclusiveEl.addEventListener('change', onModeChange);
     if (breakdownToggleBtn) {
       breakdownToggleBtn.addEventListener('click', function () {
         if (!breakdownEl) return;
