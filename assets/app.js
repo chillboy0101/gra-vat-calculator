@@ -150,21 +150,17 @@
       if (!existingPanel) {
         var panel = document.createElement('div');
         panel.id = 'vat-explainer-panel';
-        panel.style.marginTop = '18px';
+        panel.style.marginTop = '44px';
         panel.innerHTML =
-          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px;">VAT explained</div>' +
+          '<div style="font-weight:700; color:#3e4494; margin-bottom:12px;">VAT explained</div>' +
           '<div class="gra-hint" style="margin-top: 0;">' +
           'Understand VAT, NHIL, and the GETFund Levy, how they work, and the latest guidance. ' +
           '<a href="https://gra.gov.gh/domestic-tax/tax-types/vat/">Open VAT information page</a>' +
           '</div>' +
-          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px; margin-top:18px;">File and Pay taxes</div>' +
+          '<div style="font-weight:700; color:#3e4494; margin-bottom:12px; margin-top:36px;">File and Pay taxes</div>' +
           '<div class="gra-hint" style="margin-top: 0;">' +
           'Register, file your returns, and pay your taxes online through the GRA portal. ' +
           '<a href="https://taxpayersportal.com/auth">Open File and Pay portal</a>' +
-          '</div>' +
-          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px; margin-top:18px;">Disclaimer on Use Of Tax Calculators</div>' +
-          '<div class="gra-hint" style="margin-top: 0;">' +
-          'The use of the Tax Calculators only serves as a guideline. The actual tax payable by you or deduction available to you (if any) will depend on your personal circumstances. It is advised that for filing of returns and for making formal financial decisions, the exact calculation be made as per the provisions contained in the relevant Acts, and Laws.' +
           '</div>';
 
         var vatCards = mount.querySelectorAll('.paye-vat-col .paye-vat-card');
