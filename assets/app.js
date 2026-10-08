@@ -161,6 +161,10 @@
           '<div class="gra-hint" style="margin-top: 0;">' +
           'Register, file your returns, and pay your taxes online through the GRA portal. ' +
           '<a href="https://taxpayersportal.com/auth">Open File and Pay portal</a>' +
+          '</div>' +
+          '<div style="font-weight:700; color:#3e4494; margin-bottom:6px; margin-top:18px;">Disclaimer on Use Of Tax Calculators</div>' +
+          '<div class="gra-hint" style="margin-top: 0;">' +
+          'The use of the Tax Calculators only serves as a guideline. The actual tax payable by you or deduction available to you (if any) will depend on your personal circumstances. It is advised that for filing of returns and for making formal financial decisions, the exact calculation be made as per the provisions contained in the relevant Acts, and Laws.' +
           '</div>';
 
         var vatCards = mount.querySelectorAll('.paye-vat-col .paye-vat-card');
@@ -171,38 +175,6 @@
           } else {
             vatRatesCard.parentNode.appendChild(panel);
           }
-        }
-      }
-    } catch (e) {
-      // ignore
-    }
-
-    try {
-      var existingDisclaimer = document.getElementById('vat-disclaimer-section');
-      if (!existingDisclaimer) {
-        var disclaimer = document.createElement('div');
-        disclaimer.id = 'vat-disclaimer-section';
-        disclaimer.style.marginTop = '130px';
-        disclaimer.className = 'gdlr-core-pbf-element';
-        disclaimer.innerHTML =
-          '<div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-bottom gdlr_core-item-pdlr" style="padding-left: 20px;">' +
-          '<div class="gdlr-core-title-item-title-wrap">' +
-          '<h3 class="gdlr-core-title-item-title gdlr-core-skin-title" style="font-size: 20px; font-weight: 600; text-transform: none; color: #313787;">' +
-          'Disclaimer on Use Of Tax Calculators' +
-          '<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span>' +
-          '</h3>' +
-          '</div>' +
-          '<span class="gdlr-core-title-item-caption gdlr-core-info-font gdlr-core-skin-caption">' +
-          'The use of the Tax Calculators only serves as a guideline. The actual tax payable by you or deduction available to you (if any) will depend on your personal circumstances. It is advised that for filing of returns and for making formal financial decisions, the exact calculation be made as per the provisions contained in the relevant Acts, and Laws.' +
-          '</span>' +
-          '</div>';
-
-        var contentColumn = document.querySelector('.gdlr-core-pbf-sidebar-content-inner') ||
-          document.querySelector('.gdlr-core-pbf-sidebar-content') ||
-          mount.parentNode;
-
-        if (contentColumn) {
-          contentColumn.appendChild(disclaimer);
         }
       }
     } catch (e) {
